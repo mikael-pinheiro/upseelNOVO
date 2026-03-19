@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espera! Oferta Especial — Cardápio de Páscoa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brown: #4A1E0A;
+  --brown-mid: #7B3A1A;
+  --brown-light: #A05A2C;
+  --cream: #FDF5EC;
+  --pink: #FAE8DC;
+  --pink-mid: #F5D3BC;
+  --blush: #EDBEAA;
+  --green: #3A8C4A;
+  --green-dark: #2D6E3A;
+  --gold: #C8860A;
+  --white: #FFFFFF;
+  --red: #D63A2F;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: var(--cream); color: var(--brown); font-family: 'Nunito', sans-serif; overflow-x: hidden; }
+
+/* TOPBAR */
+.topbar {
+  background: var(--red);
+  color: #fff;
+  text-align: center;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(160deg, var(--brown) 0%, #6B2E0E 100%);
+  padding: 60px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '🐰';
+  font-size: 16rem;
+  position: absolute;
+  right: -50px; top: -30px;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.wait-badge {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 22px;
+  border-radius: 40px;
+  margin-bottom: 28px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(214,58,47,0.5); }
+  50% { box-shadow: 0 0 0 12px rgba(214,58,47,0); }
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero h1 em { color: var(--gold); font-style: italic; }
+
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: rgba(255,255,255,0.7);
+  max-width: 580px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+}
+
+/* TIMER */
+.timer-wrap {
+  max-width: 420px;
+  margin: 0 auto 40px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(200,134,10,0.3);
+  border-radius: 16px;
+  padding: 18px 24px;
+}
+
+.timer-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.timer-block {
+  text-align: center;
+}
+
+.timer-num {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  min-width: 60px;
+}
+
+.timer-unit {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.timer-sep {
+  font-size: 2rem;
+  color: rgba(255,255,255,0.3);
+  align-self: flex-start;
+  padding-top: 4px;
+}
+
+/* OFFER CARD */
+.offer-section {
+  background: var(--pink);
+  padding: 70px 24px;
+}
+
+.offer-card {
+  max-width: 680px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(74,30,10,0.12);
+  border: 2px solid var(--gold);
+}
+
+.offer-header {
+  background: linear-gradient(135deg, var(--brown), #7B3A1A);
+  padding: 32px 36px;
+  text-align: center;
+}
+
+.offer-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.offer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.offer-title em { color: var(--gold); font-style: italic; }
+
+.offer-desc {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.offer-body { padding: 36px; }
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.offer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: var(--cream);
+  border-radius: 14px;
+  border-left: 4px solid var(--gold);
+  transition: transform .2s;
+}
+
+.offer-item:hover { transform: translateX(4px); }
+
+.oi-icon {
+  font-size: 1.8rem;
+  width: 48px; height: 48px;
+  background: var(--pink);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.oi-info h4 { font-size: 0.95rem; font-weight: 800; color: var(--brown); margin-bottom: 3px; }
+.oi-info p { font-size: 0.82rem; color: var(--brown-mid); line-height: 1.6; }
+
+.oi-value {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.oi-from { font-size: 0.72rem; color: #aaa; text-decoration: line-through; display: block; }
+.oi-price { font-size: 0.85rem; font-weight: 800; color: var(--green); }
+
+/* Price box */
+.price-box {
+  background: linear-gradient(135deg, #FFFBF0, var(--pink));
+  border: 2px dashed var(--gold);
+  border-radius: 18px;
+  padding: 28px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.total-from {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+.total-from span { text-decoration: line-through; }
+
+.total-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--brown);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.total-price sup { font-size: 1.2rem; vertical-align: super; }
+
+.promo-badge {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 4px 16px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.total-note { font-size: 0.8rem; color: var(--brown-mid); }
+
+/* CTA Button */
+.btn-yes {
+  display: block;
+  width: 100%;
+  background: linear-gradient(135deg, #4CAF65, var(--green-dark));
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 20px;
+  border-radius: 60px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(58,140,74,0.4);
+  transition: transform .2s, box-shadow .2s;
+  margin-bottom: 14px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+}
+
+.btn-yes:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(58,140,74,0.5); }
+
+.btn-no {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 0.82rem;
+  color: #aaa;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  padding: 8px;
+  transition: color .2s;
+}
+
+.btn-no:hover { color: var(--brown-mid); }
+
+.trust-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.trust-chip { font-size: 0.75rem; color: var(--brown-mid); }
+
+/* PROOF */
+.proof-section {
+  background: var(--brown);
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.proof-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.proof-title em { color: var(--gold); font-style: italic; }
+
+.proof-sub { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 36px; }
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.proof-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: left;
+}
+
+.proof-stars { color: var(--gold); font-size: 0.82rem; margin-bottom: 10px; }
+.proof-text { font-size: 0.83rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 14px; }
+.proof-author { display: flex; align-items: center; gap: 10px; }
+.proof-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--brown-light)); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; font-size: 0.85rem; flex-shrink: 0; }
+.proof-name { font-size: 0.82rem; font-weight: 700; color: #fff; }
+.proof-date { font-size: 0.7rem; color: rgba(255,255,255,0.35); }
+
+/* GUARANTEE */
+.guarantee {
+  background: var(--pink);
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.guarantee-box {
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--brown);
+  border-radius: 20px;
+  padding: 36px;
+  color: #fff;
+}
+
+.guarantee-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.guarantee-box p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+}
+
+/* FOOTER */
+footer {
+  background: #2A0E02;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 10px; }
+.footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+
+@media(max-width:540px){
+  .offer-body { padding: 24px 18px; }
+  .offer-header { padding: 24px 20px; }
+  .oi-value { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">⚠️ Não feche essa página — sua compra ainda não está completa!</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wait-badge">🛑 Espera! Oferta exclusiva para você</div>
+  <h1>Você acabou de dar<br>um passo incrível —<br><em>agora vai ao topo!</em></h1>
+  <p>Antes de finalizar, temos uma oferta única que <strong style="color:#fff;">nunca mais vai aparecer</strong> com esse preço. Aproveite agora!</p>
+
+  <div class="timer-wrap">
+    <p class="timer-label">⏰ Oferta expira em</p>
+    <div class="timer">
+      <div class="timer-block">
+        <span class="timer-num" id="mins">14</span>
+        <span class="timer-unit">Minutos</span>
+      </div>
+      <span class="timer-sep">:</span>
+      <div class="timer-block">
+        <span class="timer-num" id="secs">59</span>
+        <span class="timer-unit">Segundos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer-section">
+  <div class="offer-card">
+    <div class="offer-header">
+      <p class="offer-eyebrow">🎁 Upgrade exclusivo</p>
+      <h2 class="offer-title">Pack Completo <em>Venda Mais</em></h2>
+      <p class="offer-desc">Tudo que você precisa para dominar as vendas de Páscoa — em um único pacote com desconto especial.</p>
+    </div>
+
+    <div class="offer-body">
+      <div class="items-list">
+        <div class="offer-item">
+          <div class="oi-icon">📱</div>
+          <div class="oi-info">
+            <h4>Pack de Artes para WhatsApp</h4>
+            <p>+30 artes prontas para status e grupos — feche pedidos pelo WhatsApp todos os dias.</p>
+          </div>
+          <div class="oi-value">
+            <span class="oi-from">R$ 27</span>
+            <span class="oi-price">+incluso</span>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="oi-icon">🎬</div>
+          <div class="oi-info">
+            <h4>Pack de Reels Prontos</h4>
+            <p>15 Reels editáveis para bombar o seu Instagram e atrair novos clientes todos os dias.</p>
+          </div>
+          <div class="oi-value">
+            <span class="oi-from">R$ 37</span>
+            <span class="oi-price">+incluso</span>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="oi-icon">📊</div>
+          <div class="oi-info">
+            <h4>Planilha de Precificação Premium</h4>
+            <p>Calcule o preço certo de cada produto e nunca mais venda no prejuízo. Automático!</p>
+          </div>
+          <div class="oi-value">
+            <span class="oi-from">R$ 47</span>
+            <span class="oi-price">+incluso</span>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="oi-icon">💬</div>
+          <div class="oi-info">
+            <h4>Scripts de Vendas para WhatsApp</h4>
+            <p>40 mensagens prontas para responder clientes, fechar encomendas e cobrar de forma profissional.</p>
+          </div>
+          <div class="oi-value">
+            <span class="oi-from">R$ 27</span>
+            <span class="oi-price">+incluso</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRICE -->
+      <div class="price-box">
+        <p class="total-from">Valor total: <span>R$ 138,00</span></p>
+        <span class="promo-badge">🔥 Desconto exclusivo de 93%</span><br>
+        <p class="total-price"><sup>R$</sup> 8,99</p>
+        <p class="total-note">Pagamento único • Acesso imediato • Vitalício</p>
+      </div>
+
+      <!-- BUTTONS -->
+      <a href="https://app.bancobabylon.com/payment/checkout/b4ddd636-d33a-4f96-b4c1-2a5d02dcc57f" class="btn-yes">✅ SIM! Quero o Pack Completo por R$ 8,99</a>
+      <button class="btn-no" onclick="window.location.href='#'">Não obrigada, não quero aproveitar essa oferta</button>
+
+      <div class="trust-row">
+        <span class="trust-chip">🔒 Pagamento seguro</span>
+        <span class="trust-chip">⚡ Acesso imediato</span>
+        <span class="trust-chip">✅ Garantia 7 dias</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof-section">
+  <h2 class="proof-title">Quem já usou <em>amou!</em></h2>
+  <p class="proof-sub">Veja o que dizem as confeiteiras que aproveitaram</p>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <p class="proof-stars">★★★★★</p>
+      <p class="proof-text">O pack de WhatsApp foi o que mais me surpreendeu. Comecei a postar e em 2 dias já tinha 8 novos pedidos!</p>
+      <div class="proof-author"><div class="proof-avatar">R</div><div><p class="proof-name">Renata Oliveira</p><p class="proof-date">Março 2026</p></div></div>
+    </div>
+    <div class="proof-card">
+      <p class="proof-stars">★★★★★</p>
+      <p class="proof-text">A planilha de precificação me abriu os olhos! Eu estava vendendo abaixo do custo sem saber. Que susto — e que alívio!</p>
+      <div class="proof-author"><div class="proof-avatar">F</div><div><p class="proof-name">Fernanda Lima</p><p class="proof-date">Fev 2026</p></div></div>
+    </div>
+    <div class="proof-card">
+      <p class="proof-stars">★★★★★</p>
+      <p class="proof-text">Os scripts de vendas são incríveis. Nunca soube como responder clientes de forma profissional. Agora sei!</p>
+      <div class="proof-author"><div class="proof-avatar">J</div><div><p class="proof-name">Juliana Matos</p><p class="proof-date">Mar 2026</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <div class="guarantee-box">
+    <div style="font-size:2rem;margin-bottom:10px;">🛡️</div>
+    <h3>Garantia de 7 Dias</h3>
+    <p>Se por qualquer motivo você não gostar, devolvemos 100% do seu dinheiro. Sem perguntas. Sem burocracia. Você não tem nada a perder!</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">🐣 Cardápio Editável de Páscoa</div>
+  <p class="footer-copy">© 2026 Cardápio Editável de Páscoa. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+// Countdown timer
+let totalSeconds = 14 * 60 + 59;
+const minsEl = document.getElementById('mins');
+const secsEl = document.getElementById('secs');
+
+const interval = setInterval(() => {
+  if (totalSeconds <= 0) {
+    clearInterval(interval);
+    minsEl.textContent = '00';
+    secsEl.textContent = '00';
+    return;
+  }
+  totalSeconds--;
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  minsEl.textContent = String(m).padStart(2, '0');
+  secsEl.textContent = String(s).padStart(2, '0');
+}, 1000);
+</script>
+</body>
+</html>
